@@ -59,7 +59,7 @@ Not a gate. Read on 2026-11-12 between 20:13Z and 20:30Z. This is our own TN10 t
 
 ## Offline rehearsal, recorded before `PRE-RUN-OPEN`
 
-REHEARSAL_PLACEHOLDER
+Rehearsal p15-a, on the desk, offline, 2026-11-12 20:26:52Z–20:43:01Z: a local bare origin with fake `SIXTEEN.md` rows (random ids, local only, never pushed to GitHub), a fake payment-key node (our lane's submits went only to it), the fake family sender with kit22's tier table, and this repo's runner, probe, counter and lane files byte for byte. Steps shortened to 1 minute each (RETURN 2). Result: `RUNNER_EXIT 0`. `FEE_SPLIT` verified on the submit rows for all five tiers (floor 100, r150 150, r200 200, r300 300, r450 450); the lane plan read `BASE N0 | HOLD-1 N60-r126 | HOLD-2 N0 | HOLD-3 N40-r150 + N60-r150 | drain`, and the lane took each N and rate on the minute boundary, including 150 (3,254 accepted by the stand-in, 0 rejected, 0 lost, no hold, `LANE_END` clean, nothing pending). Every step file, HOLD-4, RETURN, `TIMELINE`, `MEMPOOL` and `METHOD` rendered with the five new tier columns and the node-rate table. No runner, probe, counter, lane or builder of the rehearsal was left running. Nothing reached a real node except read-only reads.
 
 ## Status after the live run
 
