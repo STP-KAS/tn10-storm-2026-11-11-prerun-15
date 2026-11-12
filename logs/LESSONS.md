@@ -99,7 +99,7 @@ Mini read every minute in full (12 / 12 / 12 / 24 / 1 / 12) and matched the desk
 
 Family submit results other than OK were `already_spent` 48,984 and `orphan` 10,707 (the builder's waiting retries); 0 rate or full rejects. tKAS is not a limit (operator, 12 Nov).
 
-Key 0 after the run (read-only status, about 22:15Z): 320 coins over 3 tKAS, 75,018 usable tKAS (abort line 18,000 never near; 131,430 before the run), 4,872 coins of 3 tKAS or less; keys 1–15 have no genesis coin left. A next run must consolidate first.
+Key 0 after the run (read-only status, about 22:12Z): 320 coins over 3 tKAS, 75,018 usable tKAS (abort line 18,000 never near; 131,430 before the run), 4,872 coins of 3 tKAS or less; keys 1–15 have no genesis coin left. A next run must consolidate first.
 
 ## Quirks
 

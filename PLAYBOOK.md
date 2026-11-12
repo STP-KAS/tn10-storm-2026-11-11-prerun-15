@@ -63,11 +63,19 @@ Rehearsal p15-a, on the desk, offline, 2026-11-12 20:26:52Z–20:43:01Z: a local
 
 ## Status after the live run
 
-AFTER_PLACEHOLDER
+Read on 2026-11-12 between 21:53Z and 22:15Z. Not a gate.
+
+- **The run finished through RETURN.** The desk runner (started 20:45:18Z) ran BASE, HOLD-1, HOLD-2, HOLD-3, the pinned HOLD-4 minute (21:51Z) and RETURN without a repair or a restart, every whole minute kept pace, then stopped on its own (`RUN_STOP return-closed` 22:05:25Z, 5-minute counter tail, `RUN end` 22:10:44Z) and published `counts/chain/TIMELINE.md`, `counts/chain/MEMPOOL.md` and [logs/METHOD.md](logs/METHOD.md). No runner process was left on the desk. The private TN10 kaspad (2.1.0) was not stopped. No devnet, `KaspaPublicNode` or miner was started; `serve.mjs` and its keeper were not touched.
+- Our heavy lane: `LANE_END` 22:05:25Z, 15,831 accepted of 15,831, 0 rejected, 0 lost, 6,005.60 tKAS fees, 593.66 tKAS parked on our sink key (not swept), nothing pending. The 80-block ready-mass hold never tripped.
+- Mini: the runner (MINI-ARMED 20:44:39Z) published a second read for every step, each read in full, and matched the desk in 365 of 365 cohort cells with 0 late removals. Its TN10 kaspad was not wiped or restarted.
+- Bot: **the box that runs the bot rebooted at about 21:30Z and its files rolled back to about 21:28Z.** The waiter and finisher were relaunched unchanged at 21:42:38Z, before HOLD-3. The waiter read HOLD-3 3 s after origin and pinned 21:51Z, but its free-node check crashed at pin − 40 s (a library it loads was missing after the rollback) and read no node. It decided no send at 21:50:21Z. The finisher could not render the file; it was written from the logs and pushed late (on origin 21:55:09Z), not backdated, as `NO SEND check-failed` — not a legal `no-free-node`. Nothing was sent by the bot. A read-only check after the minute found no free node (context only).
+- Keys after the run (status read about 22:12Z): key 0 320 coins over 3 tKAS, 75,018 usable tKAS (abort line 18,000 never near), 4,872 coins of 3 tKAS or less; payment key 7,458 coins over 10 tKAS; keys 1–15 have no genesis coin left.
+- The outside heavy fee-100 stream was present all run. We do not say who sends it.
+- Results: [logs/LESSONS.md](logs/LESSONS.md), [logs/METHOD.md](logs/METHOD.md), and the pre-run 15 block in [locks/LOCKED.md](locks/LOCKED.md).
 
 ### Public statement
 
-We run our own heavy lane on TN10 in this pre-run, with the operator's OK, at N = 60 at 126 and then N = 40 and 60 at 150 sompi/gram, for about 36 minutes in all. While it runs, other TN10 users' transactions paying up to about the lane's rate wait longer on the nodes that see it. The figures for this run are added here after it. This is our own testing; tKAS has no value.
+We run our own heavy lane on TN10 in this pre-run, with the operator's OK, at N = 60 at 126 and then N = 40 and 60 at 150 sompi/gram, for about 36 minutes in all. While it runs, other TN10 users' transactions paying up to about the lane's rate wait longer on the nodes that see it. In this run, in the 36 lane minutes, other traffic landed on our desk node fell by about 10–13 percent (median about 3,090–3,140 a minute against 3,490–3,570 with the lane at 0), the node's priority fee estimate read a median of 380–404 instead of 245–282, and the backlog of other users' transactions at 100 sompi/gram in the desk mempool grew, fastest while the lane ran (it also grew at N = 0, so not all of it is ours), and was still about 7,200 at the end. The lane was stepped down to zero at the end and its own 52 waiting transactions cleared within a minute. This is our own testing; tKAS has no value.
 
 ## When something breaks
 

@@ -472,3 +472,11 @@ These lines are baked into this repo's own pastes. They come from pre-run 14's l
 ## Locked during pre-run 15
 
 When a fix works, append it here, one block per fix, in the form shown above: UTC time, what failed or worked, what was changed, why that change stays.
+
+```
+- 2026-11-12T22:10:44Z.
+- What worked: hops priced on the node's mass (kit22, calibrated at 100 and 450 first) against our own heavy lane uncapped (80-block hold, never tripped): 15,831 lane transactions accepted, 0 rejected, 0 lost, 6,005.60 tKAS fees, 593.66 parked (not swept). Every OK family hop included (9,492 / 9,484 / 10,755 / 11,790 / 12,203), every step, RETURN, TIMELINE, MEMPOOL and METHOD on origin, every whole minute kept pace. Per family, share of BASE (floor / r150 / r200 / r300 / r450): N60@126 49/75/92/99/103, HOLD-2 82/94/99/101/101, N40@150 48/74/90/98/103, N60@150 38/65/80/95/98, RETURN 78/89/93/96/97. About 2x the lane's rate kept 95-98 percent; about 3x held at about 60 blocks of ready mass. Lane waiting transactions cleared within a minute. Mini 365 of 365 cells, 0 late removals. The outside heavy fee-100 stream was present all run.
+- What failed: the box that runs the bot rebooted at about 21:30Z and rolled its files back to about 21:28Z; the waiter and finisher were relaunched at 21:42:38Z; the free-node check crashed at the pin (a library it loaded from another box folder was gone), the waiter decided no send at 21:50:21Z without reading a node, and the finisher could not render. The bot file was written from the logs and pushed late (21:55:09Z), not backdated: NO SEND check-failed, not a legal no-free-node.
+- What was changed: after the minute, on the box only: the bot's free check loads its library from a path that survived the reboot; the renderer takes the last line that is a check result and stops with a clear message if there is none. Nothing on the desk or Mini was changed during the run.
+- Why that change stays, for the next repo: keep pricing on the node's mass, the calibrations, the middle N = 0 control, the probe's template columns, Mini's count and the waiter's fetch handling. Run the bot's free check once, read-only, before arming, so a missing module shows before the pin. Consolidate key 0 first (320 coins over 3 tKAS left). If a lane must not slow other users this much, cap it lower on purpose.
+```
